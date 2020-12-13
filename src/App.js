@@ -44,7 +44,7 @@ function App() {
   let testimonial = useRef(null);
 
   useEffect(() => {
-    // preventing the white screen before prerendering
+    // preventing the white screen which pops up while page is opening
     TweenMax.to(cont,0,{visibility: "visible"})
     // initial animation
     TweenMax.from(testimonial,dur,{y: -15, opacity:0, ease:Power2.easeOut})
