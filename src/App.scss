@@ -1,0 +1,153 @@
+$text: #2e293c;
+$secondary: #a09da6;
+$bg: #fafafa;
+$shadow-color: rgba(136, 136, 136, 0.233);
+$circle: rgba(0, 0, 139, 0.562);
+$rect: rgba(136, 136, 136, 0.233);
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+@mixin flex($justify, $align, $fdirection) {
+  display: flex;
+  justify-content: $justify;
+  flex-direction: $fdirection;
+  align-items: $align;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-links {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  * {
+    text-decoration: none;
+    color: $secondary;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  #github {
+    margin-right: 2rem;
+  }
+}
+
+.testimonial-section {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  @include flex(center, center,row);
+
+  .testimonial-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    height: 70%;
+
+    .arrow {
+      min-height: 3rem;
+      width: 100px;
+      @include flex(center, center,row);
+      cursor: pointer;
+      margin: 0 2rem;
+      border-radius: 0.5rem;
+      transition: .3s ease all;
+      user-select: none;
+        &:hover {
+          background-color: $rect;
+        }
+
+      &.blocked {
+        filter: opacity(.3);
+        pointer-events: none;
+      }
+    }
+
+    .testimonial {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      @include flex(space-evenly, center, row);
+
+      .testimonial-img {
+        display: flex;
+        width: 250px;
+        height: auto;
+        overflow: hidden;
+        border-radius: .5rem;
+        box-shadow: 0 0 40px $shadow-color;
+        img {
+          width: 100%;
+        }
+
+        #decoration-circle {
+        position: absolute;
+        top: 1rem;
+        left: -5rem;
+        width: 5rem;
+        height: 5rem;
+        background-color: $circle;
+        border-radius: 50%;
+        z-index: -999;
+      }
+
+      }
+      
+      .testimonial-text {
+        width: 30rem;
+        margin-left: auto;
+        height: 100%;
+        line-break: strict;
+        @include flex(center, unset, column);
+
+        #quote {
+          font-size: 1.2rem;
+          line-height: 150%;
+          margin-bottom: 1rem;
+          font-weight: 600;
+          color: $text;
+        }
+
+        #name {
+          font-weight: 500;
+          color: $secondary;
+          margin-bottom: .5rem;
+        }
+        
+        #title {
+          color: $secondary;
+          font-size: .9rem;
+        }
+      }
+
+      
+    }
+  }
+
+  #decoration-text {
+    position: absolute;
+    bottom: 2rem;
+    right: 10rem;
+    color: $secondary;
+    opacity: 0.15;
+    user-select: none;
+    font-size: 10rem;
+    font-weight: bolder;
+    z-index: -999;
+    #hey {
+      transform: translateX(2.5rem) !important;
+    }
+  }
+  
+}
