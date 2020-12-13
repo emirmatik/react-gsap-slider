@@ -44,10 +44,13 @@ function App() {
   let testimonial = useRef(null);
 
   useEffect(() => {
+    // preventing the white screen before prerendering
     TweenMax.to(cont,0,{visibility: "visible"})
+    // initial animation
     TweenMax.from(testimonial,dur,{y: -15, opacity:0, ease:Power2.easeOut})
   }, [])
   
+  // right arrow's functionality
   const slideRight = () => {
     if (index !== testimonials.length - 1) {
       TweenMax.to(".img",dur,{x: (index+1) * -100 + "%", ease:Power2.easeOut})
@@ -56,6 +59,7 @@ function App() {
     }
   }
   
+  // left arrow's functionality
   const slideLeft = () => {
     if (index !== 0) {
       TweenMax.to(".img",dur,{x: (index-1) * -100 + "%", ease:Power2.easeOut})
